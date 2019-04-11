@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 
 enum url: String {
-        case login = "https://bank-app-test.herokuapp.com/api/login "
+        case login = "https://bank-app-test.herokuapp.com/api/login"
 }
 
 protocol calls {
@@ -21,7 +21,7 @@ class LoginTesteWorker: calls
 {
     func callLogin(user: String, password: String)
     {
-        Alamofire.request(url.login.rawValue, method: .post, parameters: ["user" : user, "password" : password], encoding: URLEncoding.httpBody, headers: nil).responseJSON(completionHandler: {response in 
+        Alamofire.request(url.login.rawValue, method: .post, parameters: ["user" : user, "password" : password], encoding: URLEncoding.httpBody, headers: nil).responseJSON(completionHandler: {response in
                 let jsonResponse = response.result.value as! NSDictionary
                 print(jsonResponse)
             })
