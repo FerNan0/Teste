@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Teste/Scenes/Login/LoginTesteWorker.swift"
+            timestampString = "576704344.548622"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "callLogin(user:password:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Teste.LoginTesteWorker.callLogin(user: Swift.String, password: Swift.String) -&gt; ()"
+                  moduleName = "Teste"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fernando/Desktop/Utilitarios/teste/Teste/Teste/Scenes/Login/LoginTesteWorker.swift"
+                  timestampString = "576704344.701277"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "53">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in Teste.LoginTesteWorker.callLogin(user: Swift.String, password: Swift.String) -&gt; ()"
+                  moduleName = "Teste"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fernando/Desktop/Utilitarios/teste/Teste/Teste/Scenes/Login/LoginTesteWorker.swift"
+                  timestampString = "576704344.70338"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "63">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

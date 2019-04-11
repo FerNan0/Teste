@@ -37,6 +37,8 @@ class LoginTesteViewController: UIViewController {
     func setup() {
         let viewController = self
         let interactor = LoginTesteInteractor()
+        let worker = LoginTesteWorker()
+        interactor.worker = worker
         viewController.interactor = interactor
     }
     

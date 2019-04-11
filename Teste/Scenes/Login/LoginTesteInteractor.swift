@@ -13,9 +13,9 @@ protocol loginProtocol {
 }
 
 class LoginTesteInteractor: loginProtocol {
-    
+    var worker: LoginTesteWorker?
     
     func clickLogin(user: String, password: String) {
-        
+        worker?.callLogin(user: user, password: password)
     }
 }
