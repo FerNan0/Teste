@@ -6,4 +6,23 @@
 //  Copyright © 2019 Fernando Duarte. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+protocol responseProtocol: class {
+    func responseLogin(response: Response)
+}
+
+class LoginTestePresenter: responseProtocol {
+    
+    var viewController: LoginTesteViewController?
+    
+    func responseLogin(response: Response) {
+        if let error = response.error {
+            viewController?.responseLoginError(response: error)
+        } else {
+            if let user = response.userAccount {
+                viewController?.responseLoginValid(response: user)
+            }
+        }
+    }
+}

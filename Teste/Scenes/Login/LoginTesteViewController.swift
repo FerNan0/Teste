@@ -8,7 +8,13 @@
 
 import UIKit
 
-class LoginTesteViewController: UIViewController {
+protocol ResponseLoginProtocol: class {
+    func responseLoginError(response: Error)
+    func responseLoginValid(response: UserAccount)
+}
+
+
+class LoginTesteViewController: UIViewController, ResponseLoginProtocol {
     
     //MARK: IBOutlets
     @IBOutlet weak var imgView: UIImageView!
@@ -38,8 +44,11 @@ class LoginTesteViewController: UIViewController {
         let viewController = self
         let interactor = LoginTesteInteractor()
         let worker = LoginTesteWorker()
+        let presenter = LoginTestePresenter()
         interactor.worker = worker
+        interactor.presenter = presenter
         viewController.interactor = interactor
+        presenter.viewController = viewController
     }
     
     func setupUI() {
@@ -67,8 +76,34 @@ class LoginTesteViewController: UIViewController {
     
     //MARK: actions
     @IBAction func login(_ sender: Any) {
-        guard let user = txtFieldUser.text else { return }
-        guard let password = txtFieldPassword.text else { return }
-        interactor?.clickLogin(user: user, password: password)
+        if (validate()) {
+            guard let user = txtFieldUser.text else { return }
+            guard let password = txtFieldPassword.text else { return }
+            interactor?.clickLogin(user: user, password: password)
+        } else {
+            let alert = UIAlertController(title: "Something wrong", message: "Invalid User", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
+    }
+    
+    func validate() -> Bool {
+        let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
+        return emailPredicate.evaluate(with: txtFieldUser.text)
+    }
+    
+    func responseLoginError(response: Error) {
+        let alert = UIAlertController(title: String(format: "Error Code: %d", response.code!), message: response.message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
+    func responseLoginValid(response: UserAccount) {
+        let alert = UIAlertController(title: "Success", message: "", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.present(alert, animated: true)
     }
 }
+
+

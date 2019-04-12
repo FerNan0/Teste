@@ -14,16 +14,17 @@ enum url: String {
 }
 
 protocol calls {
-    func callLogin(user: String, password: String)
+    func callLogin(user: String, password: String, completion: @escaping (Response) -> Void)
 }
 
 class LoginTesteWorker: calls
 {
-    func callLogin(user: String, password: String)
+    func callLogin(user: String, password: String, completion: @escaping (Response) -> Void)
     {
-        Alamofire.request(url.login.rawValue, method: .post, parameters: ["user" : user, "password" : password], encoding: URLEncoding.httpBody, headers: nil).responseJSON(completionHandler: {response in
-                let jsonResponse = response.result.value as! NSDictionary
-                print(jsonResponse)
-            })
+        Alamofire.request(url.login.rawValue, method: .post, parameters: ["user" : user, "password" : password], encoding: URLEncoding.httpBody, headers: nil).responseJSON(completionHandler: { response in
+            let jsonResponse = Response(dictionary: response.result.value as! NSDictionary)            
+            print(jsonResponse)
+            completion(jsonResponse)
+        })
     }
 }
