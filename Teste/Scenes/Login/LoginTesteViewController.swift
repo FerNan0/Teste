@@ -102,7 +102,7 @@ class LoginTesteViewController: UIViewController, ResponseLoginProtocol {
     }
     
     func responseLoginValid(response: UserAccount) {
-        let alert = UIAlertController(title: "Success", message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Bem-vindo", message: response.name, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         self.present(alert, animated: true)
     }
