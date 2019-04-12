@@ -39,10 +39,13 @@ class Response {
     
     public init(dictionary: NSDictionary) {
         if let error = dictionary["error"] as? NSDictionary {
-           self.error = Error(dictionary: error)
-        } else {
-            if let user = dictionary["UserAccount"] as? NSDictionary {
-                self.userAccount = UserAccount(dictionary: user)
+            let errorObj = Error(dictionary: error)
+            if errorObj.code != nil {
+                self.error = Error(dictionary: error)
+            } else {
+                if let user = dictionary["userAccount"] as? NSDictionary {
+                    self.userAccount = UserAccount(dictionary: user)
+                }
             }
         }
     }

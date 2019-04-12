@@ -17,8 +17,10 @@ class LoginTestePresenter: responseProtocol {
     var viewController: LoginTesteViewController?
     
     func responseLogin(response: Response) {
-        if let error = response.error {
-            viewController?.responseLoginError(response: error)
+        if response.error?.code != nil {
+            if let error = response.error {
+                viewController?.responseLoginError(response: error)
+            }
         } else {
             if let user = response.userAccount {
                 viewController?.responseLoginValid(response: user)

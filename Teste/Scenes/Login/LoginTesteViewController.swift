@@ -94,9 +94,11 @@ class LoginTesteViewController: UIViewController, ResponseLoginProtocol {
     }
     
     func responseLoginError(response: Error) {
-        let alert = UIAlertController(title: String(format: "Error Code: %d", response.code!), message: response.message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        self.present(alert, animated: true)
+        if let code = response.code {
+        let alert = UIAlertController(title: String(format: "Error Code: %d", code), message: response.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
     }
     
     func responseLoginValid(response: UserAccount) {
