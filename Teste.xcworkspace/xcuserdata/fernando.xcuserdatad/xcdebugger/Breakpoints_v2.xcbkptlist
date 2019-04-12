@@ -9,29 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Teste/Scenes/Login/LoginTesteViewController.swift"
-            timestampString = "576772157.3441139"
+            filePath = "Teste/Scenes/Login/LoginTesteRouter.swift"
+            timestampString = "576790006.130344"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "responseLoginError(response:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Teste/Scenes/Login/LoginTesteViewController.swift"
-            timestampString = "576772157.34455"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
-            landmarkName = "responseLoginValid(response:)"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "routeToStatements()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

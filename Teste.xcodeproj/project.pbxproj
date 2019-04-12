@@ -35,6 +35,24 @@
 		EDF69BC0225FBE810065D47C /* LoginTesteModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF69BBF225FBE810065D47C /* LoginTesteModels.swift */; };
 		EDF69BC1225FBE810065D47C /* LoginTesteModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF69BBF225FBE810065D47C /* LoginTesteModels.swift */; };
 		EDF69BC2225FBE810065D47C /* LoginTesteModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF69BBF225FBE810065D47C /* LoginTesteModels.swift */; };
+		EDFD8A58226107C000D76FEB /* StatementsTesteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD8A57226107C000D76FEB /* StatementsTesteViewController.swift */; };
+		EDFD8A59226107C000D76FEB /* StatementsTesteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD8A57226107C000D76FEB /* StatementsTesteViewController.swift */; };
+		EDFD8A5A226107C000D76FEB /* StatementsTesteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD8A57226107C000D76FEB /* StatementsTesteViewController.swift */; };
+		EDFD8A5C226107D200D76FEB /* StatementsTesteInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD8A5B226107D200D76FEB /* StatementsTesteInteractor.swift */; };
+		EDFD8A5D226107D200D76FEB /* StatementsTesteInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD8A5B226107D200D76FEB /* StatementsTesteInteractor.swift */; };
+		EDFD8A5E226107D200D76FEB /* StatementsTesteInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD8A5B226107D200D76FEB /* StatementsTesteInteractor.swift */; };
+		EDFD8A60226107E100D76FEB /* StatementsTestePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD8A5F226107E100D76FEB /* StatementsTestePresenter.swift */; };
+		EDFD8A61226107E100D76FEB /* StatementsTestePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD8A5F226107E100D76FEB /* StatementsTestePresenter.swift */; };
+		EDFD8A62226107E100D76FEB /* StatementsTestePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD8A5F226107E100D76FEB /* StatementsTestePresenter.swift */; };
+		EDFD8A64226107F500D76FEB /* StatementsTesteWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD8A63226107F500D76FEB /* StatementsTesteWorker.swift */; };
+		EDFD8A65226107F500D76FEB /* StatementsTesteWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD8A63226107F500D76FEB /* StatementsTesteWorker.swift */; };
+		EDFD8A66226107F500D76FEB /* StatementsTesteWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD8A63226107F500D76FEB /* StatementsTesteWorker.swift */; };
+		EDFD8A682261080400D76FEB /* StatementsTesteModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD8A672261080400D76FEB /* StatementsTesteModels.swift */; };
+		EDFD8A692261080400D76FEB /* StatementsTesteModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD8A672261080400D76FEB /* StatementsTesteModels.swift */; };
+		EDFD8A6A2261080400D76FEB /* StatementsTesteModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD8A672261080400D76FEB /* StatementsTesteModels.swift */; };
+		EDFD8A6C2261081700D76FEB /* StatementsTesteRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD8A6B2261081700D76FEB /* StatementsTesteRouter.swift */; };
+		EDFD8A6D2261081700D76FEB /* StatementsTesteRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD8A6B2261081700D76FEB /* StatementsTesteRouter.swift */; };
+		EDFD8A6E2261081700D76FEB /* StatementsTesteRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD8A6B2261081700D76FEB /* StatementsTesteRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +98,12 @@
 		ED071F70225E654D00C45C6A /* LoginTesteRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTesteRouter.swift; sourceTree = "<group>"; };
 		EDF69BBB225FBE570065D47C /* LoginTesteWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTesteWorker.swift; sourceTree = "<group>"; };
 		EDF69BBF225FBE810065D47C /* LoginTesteModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTesteModels.swift; sourceTree = "<group>"; };
+		EDFD8A57226107C000D76FEB /* StatementsTesteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsTesteViewController.swift; sourceTree = "<group>"; };
+		EDFD8A5B226107D200D76FEB /* StatementsTesteInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsTesteInteractor.swift; sourceTree = "<group>"; };
+		EDFD8A5F226107E100D76FEB /* StatementsTestePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsTestePresenter.swift; sourceTree = "<group>"; };
+		EDFD8A63226107F500D76FEB /* StatementsTesteWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsTesteWorker.swift; sourceTree = "<group>"; };
+		EDFD8A672261080400D76FEB /* StatementsTesteModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsTesteModels.swift; sourceTree = "<group>"; };
+		EDFD8A6B2261081700D76FEB /* StatementsTesteRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsTesteRouter.swift; sourceTree = "<group>"; };
 		EE9F53CA9440126E3A3247A2 /* Pods_TesteTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TesteTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC571086FCFA3E647E29C83A /* Pods_Teste.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Teste.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF42BE096C2EDBE731357ABA /* Pods_TesteUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TesteUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -193,6 +217,7 @@
 		ED071F62225E60DD00C45C6A /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				EDFD8A562261072000D76FEB /* Statements */,
 				ED071F63225E60EF00C45C6A /* Login */,
 			);
 			path = Scenes;
@@ -209,6 +234,19 @@
 				ED071F70225E654D00C45C6A /* LoginTesteRouter.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		EDFD8A562261072000D76FEB /* Statements */ = {
+			isa = PBXGroup;
+			children = (
+				EDFD8A57226107C000D76FEB /* StatementsTesteViewController.swift */,
+				EDFD8A5B226107D200D76FEB /* StatementsTesteInteractor.swift */,
+				EDFD8A5F226107E100D76FEB /* StatementsTestePresenter.swift */,
+				EDFD8A63226107F500D76FEB /* StatementsTesteWorker.swift */,
+				EDFD8A672261080400D76FEB /* StatementsTesteModels.swift */,
+				EDFD8A6B2261081700D76FEB /* StatementsTesteRouter.swift */,
+			);
+			path = Statements;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -438,12 +476,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED071F69225E651F00C45C6A /* LoginTesteInteractor.swift in Sources */,
+				EDFD8A64226107F500D76FEB /* StatementsTesteWorker.swift in Sources */,
 				ED071F37225E0D3100C45C6A /* ViewController.swift in Sources */,
+				EDFD8A5C226107D200D76FEB /* StatementsTesteInteractor.swift in Sources */,
+				EDFD8A58226107C000D76FEB /* StatementsTesteViewController.swift in Sources */,
 				ED071F71225E654D00C45C6A /* LoginTesteRouter.swift in Sources */,
+				EDFD8A6C2261081700D76FEB /* StatementsTesteRouter.swift in Sources */,
+				EDFD8A60226107E100D76FEB /* StatementsTestePresenter.swift in Sources */,
 				EDF69BC0225FBE810065D47C /* LoginTesteModels.swift in Sources */,
 				ED071F35225E0D3100C45C6A /* AppDelegate.swift in Sources */,
 				ED071F6D225E652D00C45C6A /* LoginTestePresenter.swift in Sources */,
 				EDF69BBC225FBE570065D47C /* LoginTesteWorker.swift in Sources */,
+				EDFD8A682261080400D76FEB /* StatementsTesteModels.swift in Sources */,
 				ED071F65225E650A00C45C6A /* LoginTesteViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -454,11 +498,17 @@
 			files = (
 				ED071F6E225E652D00C45C6A /* LoginTestePresenter.swift in Sources */,
 				ED071F66225E650A00C45C6A /* LoginTesteViewController.swift in Sources */,
+				EDFD8A59226107C000D76FEB /* StatementsTesteViewController.swift in Sources */,
+				EDFD8A692261080400D76FEB /* StatementsTesteModels.swift in Sources */,
+				EDFD8A5D226107D200D76FEB /* StatementsTesteInteractor.swift in Sources */,
 				ED071F6A225E651F00C45C6A /* LoginTesteInteractor.swift in Sources */,
 				EDF69BBD225FBE570065D47C /* LoginTesteWorker.swift in Sources */,
+				EDFD8A61226107E100D76FEB /* StatementsTestePresenter.swift in Sources */,
 				EDF69BC1225FBE810065D47C /* LoginTesteModels.swift in Sources */,
+				EDFD8A6D2261081700D76FEB /* StatementsTesteRouter.swift in Sources */,
 				ED071F4A225E0D3300C45C6A /* LoginTesteTests.swift in Sources */,
 				ED071F72225E654D00C45C6A /* LoginTesteRouter.swift in Sources */,
+				EDFD8A65226107F500D76FEB /* StatementsTesteWorker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,11 +518,17 @@
 			files = (
 				ED071F6F225E652D00C45C6A /* LoginTestePresenter.swift in Sources */,
 				ED071F67225E650A00C45C6A /* LoginTesteViewController.swift in Sources */,
+				EDFD8A5A226107C000D76FEB /* StatementsTesteViewController.swift in Sources */,
+				EDFD8A6A2261080400D76FEB /* StatementsTesteModels.swift in Sources */,
+				EDFD8A5E226107D200D76FEB /* StatementsTesteInteractor.swift in Sources */,
 				ED071F6B225E651F00C45C6A /* LoginTesteInteractor.swift in Sources */,
 				EDF69BBE225FBE570065D47C /* LoginTesteWorker.swift in Sources */,
+				EDFD8A62226107E100D76FEB /* StatementsTestePresenter.swift in Sources */,
 				EDF69BC2225FBE810065D47C /* LoginTesteModels.swift in Sources */,
+				EDFD8A6E2261081700D76FEB /* StatementsTesteRouter.swift in Sources */,
 				ED071F55225E0D3300C45C6A /* LoginTesteUITests.swift in Sources */,
 				ED071F73225E654D00C45C6A /* LoginTesteRouter.swift in Sources */,
+				EDFD8A66226107F500D76FEB /* StatementsTesteWorker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

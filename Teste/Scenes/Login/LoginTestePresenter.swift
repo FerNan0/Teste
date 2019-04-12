@@ -8,11 +8,11 @@
 
 import UIKit
 
-protocol responseProtocol: class {
+protocol ResponseProtocol {
     func responseLogin(response: Response)
 }
 
-class LoginTestePresenter: responseProtocol {
+class LoginTestePresenter: ResponseProtocol {
     
     var viewController: LoginTesteViewController?
     
@@ -23,7 +23,7 @@ class LoginTestePresenter: responseProtocol {
             }
         } else {
             if let user = response.userAccount {
-                viewController?.responseLoginValid(response: user)
+                viewController?.responseLoginValid(response: user)                
             }
         }
     }

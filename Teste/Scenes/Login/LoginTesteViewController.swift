@@ -28,6 +28,7 @@ class LoginTesteViewController: UIViewController, ResponseLoginProtocol {
     
     //MARK: var
     var interactor: LoginProtocol?
+    var router: LoginRouting?
     
     // MARK: View lifecycle
     override func viewDidLoad() {
@@ -45,9 +46,11 @@ class LoginTesteViewController: UIViewController, ResponseLoginProtocol {
         let interactor = LoginTesteInteractor()
         let worker = LoginTesteWorker()
         let presenter = LoginTestePresenter()
+        let router = LoginTesteRouter()
         interactor.worker = worker
         interactor.presenter = presenter
         viewController.interactor = interactor
+        viewController.router = router
         presenter.viewController = viewController
     }
     
@@ -106,9 +109,9 @@ class LoginTesteViewController: UIViewController, ResponseLoginProtocol {
     
     func responseLoginValid(response: UserAccount) {
         let alert = UIAlertController(title: "Bem-vindo", message: response.name, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in self.router?.routeToStatements() }))
         self.present(alert, animated: true)
-        UserDefaults.standard.set(txtFieldUser.text, forKey: "Email")        
+        UserDefaults.standard.set(txtFieldUser.text, forKey: "Email")
     }
 }
 

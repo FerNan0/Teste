@@ -6,4 +6,15 @@
 //  Copyright © 2019 Fernando Duarte. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class StatementsTesteViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+}

@@ -13,11 +13,11 @@ enum url: String {
         case login = "https://bank-app-test.herokuapp.com/api/login"
 }
 
-protocol calls {
+protocol Calls {
     func callLogin(user: String, password: String, completion: @escaping (Response) -> Void)
 }
 
-class LoginTesteWorker: calls
+class LoginTesteWorker: Calls
 {
     func callLogin(user: String, password: String, completion: @escaping (Response) -> Void)
     {

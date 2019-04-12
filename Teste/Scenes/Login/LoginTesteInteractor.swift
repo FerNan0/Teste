@@ -8,13 +8,13 @@
 
 import UIKit
 
-protocol loginProtocol {
+protocol LoginProtocol {
     func clickLogin(user: String, password: String)
 }
 
-class LoginTesteInteractor: loginProtocol {
-    var worker: LoginTesteWorker?
-    var presenter: LoginTestePresenter?
+class LoginTesteInteractor: LoginProtocol {
+    var worker: Calls?
+    var presenter: ResponseProtocol?
     
     func clickLogin(user: String, password: String) {
         worker?.callLogin(user: user, password: password, completion: { response in
