@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ResponseLoginProtocol: class {
+protocol ResponseLoginProtocol {
     func responseLoginError(response: Error)
     func responseLoginValid(response: UserAccount)
 }
@@ -27,7 +27,7 @@ class LoginTesteViewController: UIViewController, ResponseLoginProtocol {
     
     
     //MARK: var
-    var interactor: loginProtocol?
+    var interactor: LoginProtocol?
     
     // MARK: View lifecycle
     override func viewDidLoad() {
@@ -37,7 +37,7 @@ class LoginTesteViewController: UIViewController, ResponseLoginProtocol {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+        super.viewWillAppear(animated)
     }
     //MARK: functions
     func setup() {
@@ -93,9 +93,6 @@ class LoginTesteViewController: UIViewController, ResponseLoginProtocol {
         let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
         let isEmailValid = emailPredicate.evaluate(with: txtFieldUser.text)
-        if isEmailValid {
-            UserDefaults.standard.set(txtFieldUser.text, forKey: "Email")
-        }
         return isEmailValid
     }
     
@@ -111,6 +108,7 @@ class LoginTesteViewController: UIViewController, ResponseLoginProtocol {
         let alert = UIAlertController(title: "Bem-vindo", message: response.name, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         self.present(alert, animated: true)
+        UserDefaults.standard.set(txtFieldUser.text, forKey: "Email")        
     }
 }
 
