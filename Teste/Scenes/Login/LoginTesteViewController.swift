@@ -72,6 +72,8 @@ class LoginTesteViewController: UIViewController, ResponseLoginProtocol {
         self.btnLogin.layer.masksToBounds = false
         self.btnLogin.layer.cornerRadius = 4.0
         
+        let email = UserDefaults.standard.string(forKey: "Email") ?? ""
+        txtFieldUser.text = email
     }
     
     //MARK: actions
@@ -90,7 +92,11 @@ class LoginTesteViewController: UIViewController, ResponseLoginProtocol {
     func validate() -> Bool {
         let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
-        return emailPredicate.evaluate(with: txtFieldUser.text)
+        let isEmailValid = emailPredicate.evaluate(with: txtFieldUser.text)
+        if isEmailValid {
+            UserDefaults.standard.set(txtFieldUser.text, forKey: "Email")
+        }
+        return isEmailValid
     }
     
     func responseLoginError(response: Error) {
