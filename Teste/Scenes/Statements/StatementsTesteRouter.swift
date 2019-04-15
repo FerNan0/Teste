@@ -6,4 +6,13 @@
 //  Copyright © 2019 Fernando Duarte. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+protocol StatementsDataPassing
+{
+    var dataStore: StatementsDataStore? { get }
+}
+
+class StatementsTesteRouter: NSObject, StatementsDataPassing {
+    var dataStore: StatementsDataStore?    
+}

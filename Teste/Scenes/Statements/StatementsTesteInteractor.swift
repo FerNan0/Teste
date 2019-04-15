@@ -6,4 +6,14 @@
 //  Copyright © 2019 Fernando Duarte. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+protocol StatementsDataStore {
+    var user: UserAccount! { get set }
+}
+
+class StatementsTesteInteractor: StatementsDataStore {
+    var user: UserAccount!
+    
+
+}

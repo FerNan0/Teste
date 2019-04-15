@@ -11,12 +11,31 @@ import UIKit
 protocol LoginRouting {
     func routeToStatements()
 }
+protocol LoginDataPassing
+{
+    var dataStore: LoginDataStore? { get }
+}
 
-class LoginTesteRouter : LoginRouting {
+class LoginTesteRouter : NSObject, LoginRouting, LoginDataPassing {
+    var dataStore: LoginDataStore?
+    
     weak var viewController: LoginTesteViewController?
     func routeToStatements() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let destinationVC = storyboard.instantiateViewController(withIdentifier: "StatementsTesteViewController") as! StatementsTesteViewController
-        viewController?.present(destinationVC, animated: true, completion: nil)
+        let destinationVC: StatementsTesteViewController =  viewController?.storyboard?.instantiateViewController(withIdentifier: "StatementsTesteViewController") as! StatementsTesteViewController
+        navigateToStatements(source: viewController!, destination: destinationVC)
+    }
+    
+    func navigateToStatements(source: LoginTesteViewController, destination: StatementsTesteViewController)
+    {
+        source.show(destination, sender: nil)
+        var destinationDS = destination.router?.dataStore        
+        if let store = dataStore {
+            passDataToStatements(source: store, destination: &destinationDS!)
+        }
+        destination.setHeader()
+    }
+    
+    func passDataToStatements(source: LoginDataStore, destination: inout StatementsDataStore) {
+        destination.user = source.user
     }
 }

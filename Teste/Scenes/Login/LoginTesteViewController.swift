@@ -23,13 +23,21 @@ class LoginTesteViewController: UIViewController, ResponseLoginProtocol {
     
     @IBOutlet weak var txtFieldPassword: UITextField!
     
-    @IBOutlet weak var btnLogin: UIButton!
+    @IBOutlet weak var btnLogin: UIButton! {
+        didSet {
+            self.btnLogin.backgroundColor = UIColor(red: 59/255, green: 73/255, blue: 238/255, alpha: 1.0)
+        }
+    }
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            self.tableView.isScrollEnabled = false
+        }
+    }
     
     
     //MARK: var
     var interactor: LoginProtocol?
-    var router: LoginRouting?
-    
+    var router: (NSObjectProtocol & LoginRouting & LoginDataPassing)?    
     // MARK: View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,9 +57,11 @@ class LoginTesteViewController: UIViewController, ResponseLoginProtocol {
         let router = LoginTesteRouter()
         interactor.worker = worker
         interactor.presenter = presenter
+        presenter.viewController = viewController
+        router.viewController = viewController
+        router.dataStore = interactor
         viewController.interactor = interactor
         viewController.router = router
-        presenter.viewController = viewController
     }
     
     func setupUI() {
@@ -107,7 +117,7 @@ class LoginTesteViewController: UIViewController, ResponseLoginProtocol {
         }
     }
     
-    func responseLoginValid(response: UserAccount) {
+    func responseLoginValid(response: UserAccount) {        
         let alert = UIAlertController(title: "Bem-vindo", message: response.name, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in self.router?.routeToStatements() }))
         self.present(alert, animated: true)

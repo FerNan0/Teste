@@ -6,4 +6,8 @@
 //  Copyright © 2019 Fernando Duarte. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class StatementsTestePresenter {
+    
+}
