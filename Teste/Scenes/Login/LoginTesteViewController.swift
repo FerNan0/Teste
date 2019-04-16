@@ -8,20 +8,28 @@
 
 import UIKit
 
-protocol ResponseLoginProtocol {
+protocol ResponseLoginFromURLProtocol {
     func responseLoginError(response: Error)
     func responseLoginValid(response: UserAccount)
 }
 
 
-class LoginTesteViewController: UIViewController, ResponseLoginProtocol {
+class LoginTesteViewController: UIViewController, ResponseLoginFromURLProtocol {
     
     //MARK: IBOutlets
     @IBOutlet weak var imgView: UIImageView!
     
-    @IBOutlet weak var txtFieldUser: UITextField!
+    @IBOutlet weak var txtFieldUser: UITextField! {
+        didSet {
+            txtFieldUser.delegate = self
+        }
+    }
     
-    @IBOutlet weak var txtFieldPassword: UITextField!
+    @IBOutlet weak var txtFieldPassword: UITextField! {
+        didSet {
+            txtFieldPassword.delegate = self
+        }
+    }
     
     @IBOutlet weak var btnLogin: UIButton! {
         didSet {
@@ -48,6 +56,8 @@ class LoginTesteViewController: UIViewController, ResponseLoginProtocol {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
+    
+    
     //MARK: functions
     func setup() {
         let viewController = self
@@ -89,24 +99,19 @@ class LoginTesteViewController: UIViewController, ResponseLoginProtocol {
         txtFieldUser.text = email
     }
     
-    //MARK: actions
-    @IBAction func login(_ sender: Any) {
-        if (validate()) {
-            guard let user = txtFieldUser.text else { return }
-            guard let password = txtFieldPassword.text else { return }
-            interactor?.clickLogin(user: user, password: password)
-        } else {
-            let alert = UIAlertController(title: "Something wrong", message: "Invalid User", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-            self.present(alert, animated: true)
-        }
+    func validatePassword(password: String) -> Bool {
+        let up = password.rangeOfCharacter(from: CharacterSet.uppercaseLetters) != nil
+        let regex = ".*[^A-Za-z0-9].*"
+        let testString = NSPredicate(format:"SELF MATCHES %@", regex)
+        let spe = testString.evaluate(with: password)
+        let alpha = password.rangeOfCharacter(from: CharacterSet.alphanumerics) != nil
+        return up && spe && alpha
     }
     
-    func validate() -> Bool {
+    func validateUser() -> Bool {
         let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
-        let isEmailValid = emailPredicate.evaluate(with: txtFieldUser.text)
-        return isEmailValid
+        return emailPredicate.evaluate(with: txtFieldUser.text) || txtFieldUser.text!.isCPFValid()
     }
     
     func responseLoginError(response: Error) {
@@ -123,6 +128,46 @@ class LoginTesteViewController: UIViewController, ResponseLoginProtocol {
         self.present(alert, animated: true)
         UserDefaults.standard.set(txtFieldUser.text, forKey: "Email")
     }
+    
+    func tryToLogin() {
+        if (validateUser()) {
+            guard let user = txtFieldUser.text else { return }
+            guard let password = txtFieldPassword.text else { return }
+            let isValid = validatePassword(password: txtFieldPassword.text ?? "")
+            if isValid {
+                interactor?.clickLogin(user: user, password: password)
+            } else {
+                let alert = UIAlertController(title: "Something wrong", message: "Invalid Password", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                self.present(alert, animated: true)
+            }
+        } else {
+            let alert = UIAlertController(title: "Something wrong", message: "Invalid User", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
+    }
+    
+    //MARK: actions
+    @IBAction func login(_ sender: Any) {
+        tryToLogin()
+    }
 }
 
-
+//MARK: textField
+extension LoginTesteViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case txtFieldUser:
+            txtFieldPassword.becomeFirstResponder()
+            break
+        case txtFieldPassword:
+            self.view.endEditing(true)
+            self.tryToLogin()
+            break
+        default:
+            break
+        }
+        return true
+    }
+}

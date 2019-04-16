@@ -20,3 +20,27 @@ struct Statement {
         self.value = dictionary["value"] as! Double
     }
 }
+
+class ResponseStatements {
+    var statements: [Statement] = [Statement]()
+    var balance: Double = 0.0
+    var error: Error?
+    
+    public init(dictionary: NSDictionary) {
+        if let error = dictionary["error"] as? NSDictionary {
+            let errorObj = Error(dictionary: error)
+            if errorObj.code != nil {
+                self.error = Error(dictionary: error)
+            } else {
+                if let statementList = dictionary["statementList"] as? [NSDictionary] {
+                    
+                    for statement in statementList {
+                        let statementAux = Statement(dictionary: statement)
+                        statements.append(statementAux)
+                        balance += statementAux.value
+                    }
+                }
+            }
+        }
+    }
+}

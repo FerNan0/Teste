@@ -18,17 +18,17 @@ protocol LoginDataStore
 }
 class LoginTesteInteractor: LoginProtocol, LoginDataStore {
     var user: UserAccount?    
-    var worker: Calls?
-    var presenter: ResponseProtocol?
+    var worker: CallsLogin?
+    var presenter: ResponseLoginProtocol?
     
     func clickLogin(user: String, password: String) {
         worker?.callLogin(user: user, password: password, completion: { response in
             self.presenter?.responseLogin(response: response)
-            self.fetchOrders(response: response)
+            self.fetchLogin(response: response)
         })
     }
     
-    func fetchOrders(response: Response)
+    func fetchLogin(response: ResponseLogin)
     {
         self.user = response.userAccount
     }

@@ -14,5 +14,6 @@ protocol StatementsDataPassing
 }
 
 class StatementsTesteRouter: NSObject, StatementsDataPassing {
-    var dataStore: StatementsDataStore?    
+    var dataStore: StatementsDataStore?
+    var viewController: StatementsTesteViewController?
 }

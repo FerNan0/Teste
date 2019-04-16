@@ -8,15 +8,15 @@
 
 import UIKit
 
-protocol ResponseProtocol {
-    func responseLogin(response: Response)
+protocol ResponseLoginProtocol {
+    func responseLogin(response: ResponseLogin)
 }
 
-class LoginTestePresenter: ResponseProtocol {
+class LoginTestePresenter: ResponseLoginProtocol {
     
-    var viewController: LoginTesteViewController?
+    var viewController: ResponseLoginFromURLProtocol?
     
-    func responseLogin(response: Response) {
+    func responseLogin(response: ResponseLogin) {
         if response.error?.code != nil {
             if let error = response.error {
                 viewController?.responseLoginError(response: error)

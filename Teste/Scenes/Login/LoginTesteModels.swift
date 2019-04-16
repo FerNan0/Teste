@@ -33,7 +33,7 @@ class Error {
     }
 }
 
-class Response {
+class ResponseLogin {
     var userAccount: UserAccount?
     var error: Error?
     

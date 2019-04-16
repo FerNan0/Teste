@@ -32,7 +32,8 @@ class LoginTesteRouter : NSObject, LoginRouting, LoginDataPassing {
         if let store = dataStore {
             passDataToStatements(source: store, destination: &destinationDS!)
         }
-        destination.setHeader()
+        
+        destination.getStatements()
     }
     
     func passDataToStatements(source: LoginDataStore, destination: inout StatementsDataStore) {

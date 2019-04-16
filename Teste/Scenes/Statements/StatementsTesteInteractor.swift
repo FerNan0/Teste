@@ -8,12 +8,30 @@
 
 import UIKit
 
-protocol StatementsDataStore {
-    var user: UserAccount! { get set }
+protocol StatementsProtocol {
+    func getStatements(id: Int)
 }
 
-class StatementsTesteInteractor: StatementsDataStore {
-    var user: UserAccount!
-    
+protocol StatementsDataStore {
+    var user: UserAccount! { get set }
+    var responseStatements: ResponseStatements? { get set }
+}
 
+class StatementsTesteInteractor: StatementsDataStore, StatementsProtocol {
+    var user: UserAccount!
+    var worker: CallsStatements?
+    var presenter: ResponseStatementsProtocol?
+    var responseStatements: ResponseStatements?
+    
+    func getStatements(id: Int) {
+        worker?.callStatements(id: id, completion: { response in
+            self.fetchStatements(response: response)
+            self.presenter?.responseStatements(response: response)
+        })
+    }
+    
+    func fetchStatements(response: ResponseStatements) {
+        self.responseStatements = response
+    }
+    
 }
