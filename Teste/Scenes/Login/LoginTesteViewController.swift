@@ -129,10 +129,8 @@ class LoginTesteViewController: UIViewController, ResponseLoginFromURLProtocol {
         UserDefaults.standard.set(txtFieldUser.text, forKey: "Email")
     }
     
-    func tryToLogin() {
+    func tryToLogin(user: String, password: String) {
         if (validateUser()) {
-            guard let user = txtFieldUser.text else { return }
-            guard let password = txtFieldPassword.text else { return }
             let isValid = validatePassword(password: txtFieldPassword.text ?? "")
             if isValid {
                 interactor?.clickLogin(user: user, password: password)
@@ -150,7 +148,9 @@ class LoginTesteViewController: UIViewController, ResponseLoginFromURLProtocol {
     
     //MARK: actions
     @IBAction func login(_ sender: Any) {
-        tryToLogin()
+        if let user = txtFieldUser.text, let password = txtFieldPassword.text {
+            self.tryToLogin(user: user, password: password)
+        }
     }
 }
 
@@ -163,7 +163,9 @@ extension LoginTesteViewController: UITextFieldDelegate {
             break
         case txtFieldPassword:
             self.view.endEditing(true)
-            self.tryToLogin()
+            if let user = txtFieldUser.text, let password = txtFieldPassword.text {
+                self.tryToLogin(user: user, password: password)
+            }
             break
         default:
             break

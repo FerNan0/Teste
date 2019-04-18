@@ -29,6 +29,7 @@
 		ED071F71225E654D00C45C6A /* LoginTesteRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED071F70225E654D00C45C6A /* LoginTesteRouter.swift */; };
 		ED071F72225E654D00C45C6A /* LoginTesteRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED071F70225E654D00C45C6A /* LoginTesteRouter.swift */; };
 		ED071F73225E654D00C45C6A /* LoginTesteRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED071F70225E654D00C45C6A /* LoginTesteRouter.swift */; };
+		ED154D9B2268B0E600DB2EEF /* StatementsTesteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED154D9A2268B0E600DB2EEF /* StatementsTesteTests.swift */; };
 		EDF402972264E5970069841C /* StatementsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF402962264E5970069841C /* StatementsCell.swift */; };
 		EDF402982264E5970069841C /* StatementsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF402962264E5970069841C /* StatementsCell.swift */; };
 		EDF402992264E5970069841C /* StatementsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF402962264E5970069841C /* StatementsCell.swift */; };
@@ -108,6 +109,7 @@
 		ED071F68225E651F00C45C6A /* LoginTesteInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTesteInteractor.swift; sourceTree = "<group>"; };
 		ED071F6C225E652D00C45C6A /* LoginTestePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTestePresenter.swift; sourceTree = "<group>"; };
 		ED071F70225E654D00C45C6A /* LoginTesteRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTesteRouter.swift; sourceTree = "<group>"; };
+		ED154D9A2268B0E600DB2EEF /* StatementsTesteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsTesteTests.swift; sourceTree = "<group>"; };
 		EDF402962264E5970069841C /* StatementsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsCell.swift; sourceTree = "<group>"; };
 		EDF69BBB225FBE570065D47C /* LoginTesteWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTesteWorker.swift; sourceTree = "<group>"; };
 		EDF69BBF225FBE810065D47C /* LoginTesteModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTesteModels.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 			children = (
 				ED071F49225E0D3300C45C6A /* LoginTesteTests.swift */,
 				ED071F4B225E0D3300C45C6A /* Info.plist */,
+				ED154D9A2268B0E600DB2EEF /* StatementsTesteTests.swift */,
 			);
 			path = TesteTests;
 			sourceTree = "<group>";
@@ -551,6 +554,7 @@
 				EDF9909A22663DA800FE652A /* String+Extensions.swift in Sources */,
 				EDFD8A6D2261081700D76FEB /* StatementsTesteRouter.swift in Sources */,
 				ED071F4A225E0D3300C45C6A /* LoginTesteTests.swift in Sources */,
+				ED154D9B2268B0E600DB2EEF /* StatementsTesteTests.swift in Sources */,
 				ED071F72225E654D00C45C6A /* LoginTesteRouter.swift in Sources */,
 				EDFD8A65226107F500D76FEB /* StatementsTesteWorker.swift in Sources */,
 			);
