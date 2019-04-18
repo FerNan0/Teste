@@ -38,10 +38,18 @@ class StatementsTesteTests: XCTestCase {
     
     func testConvertDateStringTest() {
         //dado que a data é retornada pelo servidor no formato yyyy-mm-dd
-        //quando é chamado a função "".convertDate()
-        //então a data é formatada para dd/mm/yyy
+        //quando quero exibir no padrão Brasileiro dd/mm/yyy
+        //então é chamado a função .convertDate() e é formatado
         XCTAssertNotEqual(dateFromServer?.convertDate(), dateIncorrectly)
         XCTAssertEqual(dateFromServer?.convertDate(), dateCorrectly)
+    }
+    
+    func testConvertDoubleStringTest() {
+        //dado que tenho um saldo do tipo double
+        //quando quero exibir esse saldo
+        //então é chamado a função .currency() e é formatado no padrão monetário local
+        XCTAssertNotEqual(1900.0.currency(), "$ 1,900.00")
+        XCTAssertEqual(1900.0.currency(), "R$ 1.900,00")
     }
     
 }
