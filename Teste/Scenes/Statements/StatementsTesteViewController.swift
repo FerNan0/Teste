@@ -11,6 +11,7 @@ import UIKit
 protocol ResponseStatementsFromURLProtocol {
     func responseStatementsError(response: Error)
     func responseStatementsValid()
+    func setHeader(name: String, bank: String, balance: String)
 }
 
 class StatementsTesteViewController: UIViewController, StatementsDataStore, ResponseStatementsFromURLProtocol {
@@ -76,9 +77,9 @@ class StatementsTesteViewController: UIViewController, StatementsDataStore, Resp
     //MARK: vars
     var user: UserAccount!
     
-    var responseStatements: ResponseStatements?
+    var responseStatements: ResponseStatements!
     
-    var router: (NSObjectProtocol & StatementsDataPassing)?
+    var router: (NSObjectProtocol & StatementsDataPassing & LogoutProtocol)?
     
     var interactor: StatementsProtocol?
     
@@ -91,6 +92,7 @@ class StatementsTesteViewController: UIViewController, StatementsDataStore, Resp
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        getStatements()
     }
     
     //MARK: functions
@@ -120,21 +122,6 @@ class StatementsTesteViewController: UIViewController, StatementsDataStore, Resp
         }        
     }
     
-    func setHeader() {
-        let user = router?.dataStore?.user
-        lblName.text = user?.name
-        lblAccountValue.text = formatAccount(agency: user!.bankAccount, acc: user!.agency)
-        lblBalanceValue.text = self.router?.dataStore?.responseStatements?.balance.currency()
-    }
-    
-    func formatAccount(agency: String, acc: String) -> String {
-        var accFormated = acc
-        accFormated.insert(".", at: accFormated.index(accFormated.startIndex, offsetBy: 2))
-        accFormated.insert("-", at: accFormated.index(accFormated.endIndex, offsetBy: -1))
-        let account = agency + " / " + accFormated
-        return account
-    }
-    
     func responseStatementsError(response: Error) {
         
     }
@@ -142,22 +129,22 @@ class StatementsTesteViewController: UIViewController, StatementsDataStore, Resp
     func responseStatementsValid() {
         
         DispatchQueue.main.async {
-            self.setHeader()
             self.tableView.reloadData()
         }
         
     }
     
-    func goToLogin() {
-        let rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginTesteViewController") as! LoginTesteViewController
-        UIApplication.shared.keyWindow?.rootViewController = rootVC
+    func setHeader(name: String, bank: String, balance: String) {
+        self.lblName.text = name
+        self.lblAccountValue.text = bank
+        self.lblBalanceValue.text = balance
     }
     
     //MARK: actions
     @IBAction func logout(_ sender: Any) {
         let alert = UIAlertController(title: "Logout", message: "Are you sure?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "YES", style: .default) { action in
-            self.goToLogin()
+            self.router?.goToLogin()
         })
         alert.addAction(UIAlertAction(title: "NO", style: .cancel))
         self.present(alert, animated: true)

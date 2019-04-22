@@ -13,7 +13,16 @@ protocol StatementsDataPassing
     var dataStore: StatementsDataStore? { get }
 }
 
-class StatementsTesteRouter: NSObject, StatementsDataPassing {
+protocol LogoutProtocol {
+    func goToLogin()
+}
+
+class StatementsTesteRouter: NSObject, StatementsDataPassing, LogoutProtocol {
     var dataStore: StatementsDataStore?
     var viewController: StatementsTesteViewController?
+    
+    func goToLogin() {
+        let rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginTesteViewController") as! LoginTesteViewController
+        UIApplication.shared.keyWindow?.rootViewController = rootVC
+    }
 }

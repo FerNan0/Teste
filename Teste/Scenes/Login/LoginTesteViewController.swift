@@ -8,13 +8,13 @@
 
 import UIKit
 
-protocol ResponseLoginFromURLProtocol {
-    func responseLoginError(response: Error)
+protocol ValidateLoginResponseProtocol {
     func responseLoginValid(response: UserAccount)
+    func showAlert(title: String, message: String, actionTitle: String)
 }
 
 
-class LoginTesteViewController: UIViewController, ResponseLoginFromURLProtocol {
+class LoginTesteViewController: UIViewController, ValidateLoginResponseProtocol {
     
     //MARK: IBOutlets
     @IBOutlet weak var imgView: UIImageView!
@@ -99,29 +99,6 @@ class LoginTesteViewController: UIViewController, ResponseLoginFromURLProtocol {
         txtFieldUser.text = email
     }
     
-    func validatePassword(password: String) -> Bool {
-        let up = password.rangeOfCharacter(from: CharacterSet.uppercaseLetters) != nil
-        let regex = ".*[^A-Za-z0-9].*"
-        let testString = NSPredicate(format:"SELF MATCHES %@", regex)
-        let spe = testString.evaluate(with: password)
-        let alpha = password.rangeOfCharacter(from: CharacterSet.alphanumerics) != nil
-        return up && spe && alpha
-    }
-    
-    func validateUser() -> Bool {
-        let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
-        return emailPredicate.evaluate(with: txtFieldUser.text) || txtFieldUser.text!.isCPFValid()
-    }
-    
-    func responseLoginError(response: Error) {
-        if let code = response.code {
-        let alert = UIAlertController(title: String(format: "Error Code: %d", code), message: response.message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-            self.present(alert, animated: true)
-        }
-    }
-    
     func responseLoginValid(response: UserAccount) {        
         let alert = UIAlertController(title: "Bem-vindo", message: response.name, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in self.router?.routeToStatements() }))
@@ -129,20 +106,15 @@ class LoginTesteViewController: UIViewController, ResponseLoginFromURLProtocol {
         UserDefaults.standard.set(txtFieldUser.text, forKey: "Email")
     }
     
+    func showAlert(title: String, message: String, actionTitle: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: actionTitle, style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
     func tryToLogin(user: String, password: String) {
-        if (validateUser()) {
-            let isValid = validatePassword(password: txtFieldPassword.text ?? "")
-            if isValid {
-                interactor?.clickLogin(user: user, password: password)
-            } else {
-                let alert = UIAlertController(title: "Something wrong", message: "Invalid Password", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-                self.present(alert, animated: true)
-            }
-        } else {
-            let alert = UIAlertController(title: "Something wrong", message: "Invalid User", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-            self.present(alert, animated: true)
+        if let user = txtFieldUser.text, let intrctr = interactor {
+            intrctr.validateLogin(password: password, user: user)
         }
     }
     
