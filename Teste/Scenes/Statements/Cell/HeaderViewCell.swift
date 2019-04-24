@@ -16,4 +16,7 @@ class HeaderViewCell: UITableViewCell {
             lblTitle.text = "Recentes"
         }
     }
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
 }

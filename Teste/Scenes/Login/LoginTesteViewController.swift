@@ -36,11 +36,7 @@ class LoginTesteViewController: UIViewController, ValidateLoginResponseProtocol 
             self.btnLogin.backgroundColor = UIColor(red: 59/255, green: 73/255, blue: 238/255, alpha: 1.0)
         }
     }
-    @IBOutlet weak var tableView: UITableView! {
-        didSet {
-            self.tableView.isScrollEnabled = false
-        }
-    }
+
     
     
     //MARK: var

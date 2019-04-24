@@ -12,6 +12,7 @@ protocol ResponseStatementsFromURLProtocol {
     func responseStatementsError(response: Error)
     func responseStatementsValid()
     func setHeader(name: String, bank: String, balance: String)
+    func getStatements()
 }
 
 class StatementsTesteViewController: UIViewController, StatementsDataStore, ResponseStatementsFromURLProtocol {
@@ -70,7 +71,8 @@ class StatementsTesteViewController: UIViewController, StatementsDataStore, Resp
         didSet {
             self.tableView.delegate = self
             self.tableView.dataSource = self
-            self.tableView.reloadData()
+            self.tableView.register(UINib(nibName: "HeaderViewCell", bundle: nil), forCellReuseIdentifier: "headerViewCell")
+            self.tableView.register(UINib(nibName: "StatementsCell", bundle: nil), forCellReuseIdentifier: "statementsCell")
         }
     }
     
@@ -92,7 +94,6 @@ class StatementsTesteViewController: UIViewController, StatementsDataStore, Resp
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getStatements()
     }
     
     //MARK: functions
@@ -164,7 +165,7 @@ extension StatementsTesteViewController: UITableViewDataSource, UITableViewDeleg
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerViewCell") as? HeaderViewCell
             return cell ?? UITableViewCell()
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "StatementsCell") as? StatementsCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "statementsCell") as? StatementsCell
             cell?.selectionStyle = .none
             if (indexPath.row - 1) >= 0 {
                 if let statement = self.router?.dataStore?.responseStatements?.statements[indexPath.row - 1] {

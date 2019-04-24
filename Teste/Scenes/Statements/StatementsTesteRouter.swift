@@ -22,7 +22,8 @@ class StatementsTesteRouter: NSObject, StatementsDataPassing, LogoutProtocol {
     var viewController: StatementsTesteViewController?
     
     func goToLogin() {
-        let rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginTesteViewController") as! LoginTesteViewController
-        UIApplication.shared.keyWindow?.rootViewController = rootVC
+        let login = LoginTesteViewController(nibName: "LoginTesteViewController", bundle: nil)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window!.rootViewController = login
     }
 }

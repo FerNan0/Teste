@@ -21,16 +21,18 @@ class LoginTesteRouter : NSObject, LoginRouting, LoginDataPassing {
     
     weak var viewController: LoginTesteViewController?
     func routeToStatements() {
-        let destinationVC: StatementsTesteViewController = viewController?.storyboard?.instantiateViewController(withIdentifier: "StatementsTesteViewController") as! StatementsTesteViewController
+        let destinationVC: StatementsTesteViewController = StatementsTesteViewController(nibName: "StatementsTesteViewController", bundle: nil)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window!.rootViewController = destinationVC
         navigateToStatements(source: viewController!, destination: destinationVC)
     }
     
     func navigateToStatements(source: LoginTesteViewController, destination: StatementsTesteViewController)
-    {
-        source.show(destination, sender: nil)
+    {        
         var destinationDS = destination.router?.dataStore        
         if let store = dataStore {
             passDataToStatements(source: store, destination: &destinationDS!)
+            destination.getStatements()
         }
     }
     
